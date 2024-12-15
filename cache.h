@@ -3,29 +3,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-// We create some type defining structs below
-// These set of variables in the struct will be used
-// for the intialization of our cache
-typedef struct {
-    int Key;
-    int Value;
-    int Uses;
-} Cache_Entry;
-
-// These sets of variables for this struct will focus
-// on the actual cachinh
-typedef struct {
-    Cache_Entry *Tests;
-    int Max_Capacity;
-    int Entries;
-}Cache;
-
-// The function definitions of the cache.h which are used
-// When called
-Cache *Allocate_Cache(int Max_Capacity);
-int Get_Steps();
-int Hit_Rate();
-int Cache_Storage();
+bool cache_has(int key);
+int cache_get(int key);
+void cache_put(int key, int value);
+int actual_cache_hits();
+int actual_cache_tests();
 
 #endif
