@@ -1,11 +1,19 @@
 # Using all: will help compile multiple C files
 # creating the own representation of "cache: cache.c"
 # Later adding "cache" onto clean and remove
-collatz: collatz.c
-	gcc -o collatz collatz.c
+all: collatz
+
+CFLAGS = -g -Wall -DDEBUG
+
+OBJS = collatz.o cache.o
+
+collatz: $(OBJS)
+	gcc -o collatz $(OBJS)
+
+collatz.o: collatz.c cache.h
+
+# handlers.o: handlers.c handlers.h
+#   gcc -c handlers.c
 
 clean:
-	rm collatz
-
-test: collatz
-	bash test.sh
+	rm -f myshell $(OBJS)
